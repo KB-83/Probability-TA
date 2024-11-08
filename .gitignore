@@ -1,0 +1,42 @@
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.lof
+*.lot
+*.xdv
+
+# Editor files
+*~ 
+*.swp
+*.bak
+*.backup
+*.tmp
+*.dvi
+
+# Other backups and temp files
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.bcf
+*.run.xml
+
+# Files created by latexmk
+latexmkrc
+
+**/output/
+.DS_Store
