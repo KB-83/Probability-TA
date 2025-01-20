@@ -1,0 +1,117 @@
+\problem{}
+به سوالات زیر پاسخ دهید.(قسمت ب و پ امتیازی)\\
+    \subproblem{}
+     فرض کنید \( X \) یک متغیر تصادفی نامنفی باشد. نشان دهید به ازای هر \( a > 0 \) و هر \( k > 0 \) داریم:
+    \[
+    Pr[X \geq a] \leq \frac{E[X^k]}{a^k}.
+    \]
+    \subproblem{}
+     فرض کنید \( \{X_n\}_n \) دنباله‌ای از متغیرهای تصادفی باشد و \( X \) نیز یک متغیر تصادفی باشد. نشان دهید اگر و فقط اگر 
+    \[
+    Pr\{\lim_{n \to \infty} X_n = X\} = 1
+    \]
+    داشته باشیم، برای هر \( \epsilon > 0 \) داریم:
+    \[
+    \lim_{n \to \infty} Pr[\bigcup_{m=n}^\infty \{|X_m - X| \geq \epsilon\}] = 0
+    \]
+    راهنمایی: درمورد
+    \[
+    Pr[\bigcup_{k=1}^\infty \bigcap_{N=1}^\infty \bigcup_{n=N}^\infty \{\omega : |X_n(\omega) - X(\omega)| \geq \frac{1}{k}\}]
+    \]
+    چه می‌توان گفت؟
+    \\\\
+    \subproblem{}
+    فرض کنید 
+    $\{X_n\}_n$
+    دنباله ای از متغیر های تصادفی باشد.
+    اگر
+    $k>0$
+    موجود باشد که \\
+    $\sum_{n=1}^{\infty}E[|X_n|^k] < +\infty$
+    نشان دهید
+    $Pr[\lim_{n \to \infty} X_n = 0] = 1$
+    است.\\
+
+\textbf{پاسخ.}\\
+\\
+\textbf{آ)}
+می‌دانیم اگر $X\geq a$ باشد آنگاه $X^k\geq a^k$ پس درواقع $\{X\geq a\}\subseteq \{X^k\geq a^k\}$ (البته در اینجا چون $X$ و $a$ نامنفی هستند این دو رویداد معادل هستند). پس داریم:
+\[
+	\mathbb{P}[X\geq a] = \mathbb{P}[X^k\geq a^k] \overset{\textbf{\lr{markov's inequality}}}{\leq} \frac{\mathbb{E}[X^k]}{a^k} \Longrightarrow \mathbb{P}[X\geq a] \leq \frac{\mathbb{E}[X^k]}{a^k} \quad
+\]
+\textbf{ب)}
+
+از بالا به پایین:\small
+\[
+1= P[\lim_{n \longrightarrow \infty} X_n=X]=P[\lim_{n \longrightarrow \infty} X_n-X=0] \Longrightarrow 0=P[\lim_{n \longrightarrow \infty} X_n-X\neq0]=
+\]
+\[
+P\omega :  \forall N \in \mathrm{N}, \;\exists n  \ge N,\;\exists k \in \mathrm{N}   \;:\;\;\;\;  |X_n(\omega)-X(\omega)|\ge \frac{1}{k}
+\]
+\[
+=P[\bigcup_{k=1}^{\infty}\bigcap_{N=1}^{\infty}\bigcup_{n=N}^{\infty}\{ \omega: |X_n(\omega)-X(\omega)|\ge \frac{1}{k}\}]\ge
+\]
+\[
+P[\bigcap_{N=1}^{\infty}\bigcup_{n=N}^{\infty}\{ \omega: |X_n
+(\omega)-X(\omega)|\ge \frac{1}{k} \;(\forall k \in \mathrm{N})\}]
+\]
+\[
+P[\lim_{N \longrightarrow \infty}\bigcup_{n=N}^{\infty} \{ \omega: |X_n(\omega)-X(\omega)|\ge \frac{1}{k} \;(\forall k \in \mathrm{N})\}]=
+\]
+\[
+=\lim_{N \longrightarrow \infty}P[ \bigcup_{n=N}^{\infty}\{ \omega: |X_n(\omega)-X(\omega)|\ge \frac{1}{k} \;(\forall k \in \mathrm{N})\}]
+\]
+\[
+=\lim_{N \longrightarrow \infty}P[\bigcup_{n=N}^{\infty} \{ \omega: |X_n(\omega)-X(\omega)|\ge \epsilon \;(\forall \epsilon >0)\}]
+\]
+\[
+=\lim_{N \longrightarrow \infty}P[\bigcup_{n=N}^{\infty}\{|X_n-X|\ge \epsilon \;(\forall \epsilon >0)\}] \ge 0 \Longrightarrow \lim_{N \longrightarrow \infty}P[\bigcup_{n=N}^{\infty}\{|X_n-X|\ge \epsilon \;(\forall \epsilon >0)\}]=0
+\]
+از پایین به بالا:
+\[
+0=\lim_{N \longrightarrow \infty}P[\bigcup_{n=N}^{\infty}\{|X_n-X|\ge \epsilon \;(\forall \epsilon >0)\}]=\lim_{N \longrightarrow \infty}P[\bigcup_{n=N}^{\infty} \{ \omega: |X_n(\omega)-X(\omega)|\ge \epsilon \;(\forall \epsilon >0)\}]=
+\]
+\[
+\lim_{N \longrightarrow \infty}P[ \bigcup_{n=N}^{\infty}\{ \omega: |X_n(\omega)-X(\omega)|\ge \frac{1}{k} \;(\forall k \in \mathrm{N})\}
+\]
+
+\[
+=P[\lim_{N \longrightarrow \infty}\bigcup_{n=N}^{\infty} \{ \omega: |X_n(\omega)-X(\omega)|\ge \frac{1}{k} \;(\forall k \in \mathrm{N})\}]
+\]
+
+\[
+= P[\bigcap_{N=1}^{\infty}\bigcup_{n=N}^{\infty}\{ \omega: |X_n
+(\omega)-X(\omega)|\ge \frac{1}{k} \;(\forall k \in \mathrm{N})\}]
+\]
+
+\[
+=P[\omega : \forall N \in \mathrm{N} , \exists n \ge N \; : \;\; |X_n(\omega)-X(\omega)|\ge \frac{1}{k}\;(\forall k \in \mathrm{N})]
+\]
+
+\[
+\Longrightarrow 1=P[\omega : \exists N \in \mathrm{N} , \forall n \ge N \; : \;\; |X_n(\omega)-X(\omega)|< \frac{1}{k}\;(\forall k \in \mathrm{N})]=
+\]
+\[
+P[\omega : \exists N \in \mathrm{N} , \forall n \ge N \; : \;\; |X_n(\omega)-X(\omega)|=0]=P[\omega : \lim_{n \longrightarrow \infty} |X_n(\omega)-X(\omega)|=0]=
+\]
+\[
+P[\omega : \lim_{n \longrightarrow \infty} X_n(\omega)-X(\omega)=0]=P[\omega : \lim_{n \longrightarrow \infty} X_n(\omega)=X(\omega)]=P[ \lim_{n\longrightarrow \infty} X_n=X]\Longrightarrow
+\]
+\[
+P[ \lim_{n\longrightarrow \infty} X_n=X]=1
+\]
+پس دو گزاره هم ارزاند.
+\\\\
+\textbf{پ)}\\
+با استفاده از بخش های قبل داریم:
+\[
++\infty > \sum_{n=1}^{\infty} \mathbf{E}[|X_n|^k] 
+\longrightarrow +\infty > \sum_{n=1}^{\infty} \frac{\mathbf{E}[|X_n|^k]}{\epsilon^k}\;\;\; (\forall \epsilon>0)
+\]
+\[
+ \frac{\mathbf{E}[X^k]}{a^k} \ge  P[X \ge a] \;\;(X\ge 0 \;\; \& a>0)\; \longrightarrow +\infty> \sum_{n=1}^{\infty} P[|X_n| \ge \epsilon]= \sum_{n=1}^{\infty} P[|X_n-0| \ge \epsilon]\]
+حال از بین اعضای $X_i$ ها،  $x$ را به طوری که $x\neq 0$ و قدرمطلق آن کمتر از باقی اعضا  تمامی $X_i$ها باشد انتخاب میکنیم، حال با انتخاب اپسیلونی کمتر از قدر مطلق $x$  ،تمامی احتمال ها ناصفر هستند پس جمع آنها بینهایت میشود که تناقض با فرض است. پس از یک جایی به بعد $X_n$ ها صفر میشوند .به عبارتی:
+\[
+\lim_{m \longrightarrow \infty} P[\bigcup_{n=m}^{\infty} {|X_n-0| \ge \epsilon}] =0 \Longrightarrow P[\lim_{n \longrightarrow \infty} X_n=0]=1
+ \quad \square
+ \]

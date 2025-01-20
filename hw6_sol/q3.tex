@@ -1,0 +1,47 @@
+\problem{}
+با استفاده از قضیه حد مرکزی ثابت کنید که متوسط فاصله از مبدأ برای یک قدم زن تصادفی
+پس از n حرکت تقریبا برابر با $\sqrt{\dfrac{2n}{\pi}}$ است.(قدم زن فقط به سمت چپ و راست حرکت میکند)
+
+\textbf{پاسخ.}\\
+
+$X_i$ را به صورت زیر تعریف می‌کنیم:
+\[
+	X_i = \begin{cases}
+		1 & \text{\lr{if in step $i$ we go to the right}} \\
+		-1 & \text{\lr{if in step $i$ we go to the left}}
+	\end{cases}
+\]
+\[
+	\Longrightarrow\begin{cases}
+		\mathbb{E}[X_i] = 0 \\
+		Var[X_i] = 1
+	\end{cases}
+\]
+حال $Y_n = \sum_{i=1}^{n}X_i$ را تعریف می‌کنیم و داریم:
+\[
+	\Longrightarrow\begin{cases}
+		\mathbb{E}[Y_n] = 0 \\
+		Var[Y_n] = n
+		\end{cases}
+\]
+حال می‌خواهیم با \lr{CLT} ثابت کنیم $\mathbb{E}[|Y_n|] \approx \sqrt{\frac{2n}{\pi}}$ برای $n$های به اندازه کافی بزرگ. طبق \lr{CLT} داریم:
+\[
+	\frac{Y_n}{\sqrt{n}} \xrightarrow{d} Z,
+\quad \textbf{\lr{where }} Z \sim \mathcal{N}(0,1).
+\]
+حال از \lr{Continuous Mapping Theorem} داریم که $|\frac{Y_n}{\sqrt{n}}|\to |Z|$ پس:
+\[
+	\mathbb{E}[|\frac{Y_n}{\sqrt{n}}|] = \frac{\mathbb{E}[|Y_n|]}{\sqrt{n}} \underset{n\to \infty}{\longrightarrow} \mathbb{E}[|Z|] = \sqrt{\frac{2}{\pi}}
+\]
+\[
+	\Longrightarrow \mathbb{E}[|Y_n|] \approx \sqrt{\frac{2n}{\pi}}
+\]
+حال به عنوان لمی که در حل سوال به صورت بالا استفاده می‌شود ثابت می‌کنیم $E[|Z|] = \sqrt{\frac{2}{\pi}}$. داریم:
+\[
+	\mathbb{E}[|Z|] = \int_{-\infty}^{\infty} |z| \frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}dz = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} |z| e^{-\frac{z^2}{2}}dz = \frac{2}{\sqrt{2\pi}}\int_{0}^{\infty} ze^{-\frac{z^2}{2}}dz
+\]
+حال با تغییر متغیر $u=\frac{z^2}{2}$ داریم:
+\[
+	\mathbb{E}[|Z|] = \frac{2}{\sqrt{2\pi}}\int_{0}^{\infty} e^{-u}du = \frac{2}{\sqrt{2\pi}} = \sqrt{\frac{2}{\pi}}
+\]
+پس این لم نیز ثابت شد و حل مسئله کامل می‌شود. $\square$

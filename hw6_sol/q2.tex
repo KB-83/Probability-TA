@@ -1,0 +1,100 @@
+\problem{}
+\subproblem{}
+برای هر متغیر نامنفی $X$ و هر $a > 0$ ،
+ثابت کنید\\
+\[E[X] \geq aP[X\geq a]\]
+\subproblem{}
+با ایده اثبات بخش قبل، با فرض اینکه $X<2E[X]$
+سعی کنید یک کران بالا برای مقدار $P[X \leq \dfrac{E[X]}{2}]$
+بدست بیاورید.\\
+\subproblem{}
+ثابت کنید برای هر مقدار $t > 0$ که تابع مولد گشتاور در $X$
+در $t$
+قابل تعریف باشد و هر $a \in \mathbb{R}$
+\[e^{-a.t}M_X(t) \geq P[X\geq a]\]\\
+
+\textbf{پاسخ.}\\
+\\
+\textbf{آ)}
+از تعریف امید ریاضی، می‌دانیم:
+\[
+E[X] = \int_0^a x f(x) \, dx + \int_a^\infty x f(x) \, dx.
+\]
+
+قسمت اول انتگرال مقداری نامنفی است، بنابراین داریم:
+\[
+E[X] \geq \int_a^\infty x f(x) \, dx.
+\]
+
+همچنین در قسمت دوم انتگرال داریم $x \geq a$ بنابرین:\\
+\[
+\int_a^\infty x f(x) \, dx \geq \int_a^\infty a f(x) \, dx.
+\]
+
+از اینجا نتیجه می‌گیریم:
+\[
+\int_a^\infty a f(x) \, dx = a \int_a^\infty f(x) \, dx = a P[X \geq a].
+\]
+
+در نتیجه:
+\[
+E[X] \geq a P[X \geq a].
+\]
+
+% اگر هر دو طرف نابرابری را بر \(a > 0\) تقسیم کنیم، داریم:
+% \[
+% P[X \geq a] \leq \frac{E[X]}{a}.
+% \]
+
+\textbf{ب)}\\
+
+از تعریف امید ریاضی و با توجه به اینکه $0 \leq X \leq 2E[X] $، می‌دانیم:
+\[
+E[X] = \int_0^{\frac{E[X]}{2}} x f(x) \, dx + \int_{\frac{E[X]}{2}}^{2E[X]} x f(x) \, dx.
+\]
+
+عبارات داخل انتگرال مقادیری نامنفی است، بنابراین داریم:
+\[
+E[X] \leq {\frac{E[X]}{2}} \int_0^{\frac{E[X]}{2}} f(x) \, dx + 2E[X]\int_\frac{E[X]}{2}^{2E[X]} f(x) \, dx
+\]
+\[
+= {\frac{E[X]}{2}} P[X \leq {\frac{E[X]}{2}}] + 2E[X] (1 - P[X \leq {\frac{E[X]}{2}}])
+\]
+
+با فرض $E[X] > 0$ و تقسیم دو طرف نامساوی به آن داریم:
+\[
+    1 \leq \frac{1}{2} P[X \leq {\frac{E[X]}{2}}] + 2 - 2P[X \leq {\frac{E[X]}{2}}]
+\]
+
+یا همان:\\
+\[
+P[X \leq {\frac{E[X]}{2}}] \leq \frac{2}{3} .
+\]
+
+
+\textbf{پ)}\\
+روش اول)\\
+برای اثبات نابرابری \[e^{-a \cdot t} M_X(t) \geq P[X \geq a],\] از تعریف تابع مولد گشتاور استفاده می‌کنیم:
+\[
+M_X(t) = E[e^{tX}] = \int_0^\infty e^{tx} f_X(x) \, dx.
+\]
+
+در بازه \(x \geq a\) داریم \(e^{tx} \geq e^{ta}\). بنابراین:
+\[
+M_X(t) \geq \int_a^\infty e^{ta} f_X(x) \, dx = e^{ta} P[X \geq a].
+\]
+
+دو طرف را بر \(e^{ta}\) تقسیم می‌کنیم:
+\[
+e^{-a \cdot t} M_X(t) \geq P[X \geq a].
+\]
+
+روش دوم )\\
+برای حل این قسمت از \lr{markov's inequality} که در بخش اول اثبات کردیم استفاده می‌کنیم. داریم:
+\[
+	X \geq a \overset{t>0}{\Longleftrightarrow} e^{tX} \geq e^{ta}
+\]
+\[
+	\overset{\textbf{\lr{markov's inequality}}}{\Longrightarrow} \mathbb{P}[e^{tX} \geq e^{ta}] \leq \frac{\mathbb{E}[e^{tX}]}{e^{ta}} = e^{-ta}\mathbb{E}[e^{tX}] = e^{-ta}M_X(t)
+\]
+توجه کنید $e^{tX}$ و $e^{ta}$ هردو نامنفی هستند بنابراین می‌توانیم از \lr{markov's inequality} استفاده کنیم. در اینجا حل مسئله کامل می‌شود. $\square$

@@ -1,0 +1,130 @@
+\problem{}
+فرض کنید $X$ یک متغیر تصادفی
+نرمال استاندارد 
+و $Y$ یک متغیر مستقل از $X$ با تابع جرم احتمال
+زیر باشد 
+\[
+    P(Y = +1) = P(Y = -1) = \frac{1}{2}
+\]\\
+\subproblem{}
+ثابت کنید $Z = XY$ هم توزیع نرمال دارد.\\
+\subproblem{}
+میانگین و واریانس $Z$ را بیابید.\\
+\subproblem{}
+$cov(X,Y)$ را بدست آورید.\\
+\subproblem{}
+آیا $X+Z$ هم توزیع نرمال دارد؟\\
+
+
+\textbf{پاسخ.}\\
+\\
+\textbf{آ)}\\
+با تابع گشتاور مسئله را حل می‌کنیم:
+\[
+	M_Z(t)=\mathbb{E}[e^{tZ}]=\mathbb{E}[e^{tXY}]=\sum_{y\in \{+1,-1\}} \mathbb{E}[e^{tXy}]\mathbb{P}[Y=y]
+\]
+\[
+	\Longrightarrow M_Z(t)=\frac{1}{2}\mathbb{E}[e^{tX}]+\frac{1}{2}\mathbb{E}[e^{-tX}] = \frac{1}{2}M_X(t)+\frac{1}{2}M_X(-t) \overset{X\sim \mathcal{N}(0,1)}{=} \textbf{\lr{exp}}(\frac{t^2}{2})
+\]
+پس توزیع $Z$ نیز نرمال استاندارد است.
+
+\textbf{ب)}\\
+طبق قسمت قبل با توجه به نرمال استاندارد بودن توزیع $Z$ به ترتیب $\mu_Z = 0$ و $\sigma_{Z}^2 = 1$ محاسبه می‌شود.
+
+\textbf{پ)}\\
+\[
+		Cov(X,Y) = \mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y] = \mathbb{E}[Z] - \mathbb{E}[X]\mathbb{E}[Y] = 0 - 0 \times 0 = 0
+\]
+
+\textbf{ت)}\\
+
+\[
+	M_{X+Z}(t) = \mathbb{E}[e^{t(X+Z)}] = \mathbb{E}[e^{tX(1+Y)}] = \sum_{y\in \{+1,-1\}} \mathbb{E}[e^{tX(1+y)}]\mathbb{P}[Y=y]
+\]
+\[	
+	= \frac{1}{2}\mathbb{E}[e^{tX(1+1)}] + \frac{1}{2}\mathbb{E}[e^{tX(1-1)}] = \frac{1}{2}\mathbb{E}[e^{2tX}] + \frac{1}{2}\mathbb{E}[e^{0}] = \frac{1}{2}M_X(2t) + \frac{1}{2} = \frac{1}{2}\textbf{\lr{exp}}(2t^2) + \frac{1}{2}
+\]
+می‌دانیم اگر $W \sim \mathcal{N}(\mu,\sigma^2)$ باشد داریم:
+\[
+	M_W(t) = \textbf{\lr{exp}}(\mu t + \frac{\sigma^2t^2}{2})
+\] 
+حال طبق قضیه یکتایی ثابت می‌شود که $X+Z$ نرمال نیست و حل مسئله به اتمام می‌رسد. $\square$
+
+% \subsection*{(الف) اثبات کنید \( Z = XY \) توزیع نرمال دارد.}
+
+% از آنجایی که \( Y \) مقدارهای \( +1 \) و \( -1 \) را با احتمال برابر می‌گیرد و مستقل از \( X \) است:
+% \[
+% Z = XY \quad \text{مقدارهای} \pm X \ \text{را می‌گیرد.}
+% \]
+% توزیع \( Z \) توسط توزیع شرطی \( Z \) به شرط \( Y \) مشخص می‌شود:
+% \[
+% Z \mid (Y = +1) = X \quad \text{و} \quad Z \mid (Y = -1) = -X.
+% \]
+% با توجه به اینکه \( P(Y = +1) = P(Y = -1) = \frac{1}{2} \) و \( X \sim N(0, 1) \)، \( Z \) حول صفر متقارن است. همچنین:
+% \[
+% f_Z(z) = \frac{1}{2} f_X(z) + \frac{1}{2} f_X(-z),
+% \]
+% که در آن \( f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2} \) است. چون \( f_X(-z) = f_X(z) \)، نتیجه می‌گیریم:
+% \[
+% f_Z(z) = f_X(z).
+% \]
+% پس \( Z \sim N(0, 1) \).
+
+% \subsection*{(ب) میانگین و واریانس \( Z \)}
+
+% 1. میانگین \( Z \):
+% \[
+% \mathbb{E}[Z] = \mathbb{E}[XY] = \mathbb{E}[X] \mathbb{E}[Y] \quad \text{(با توجه به استقلال \( X \) و \( Y \))}.
+% \]
+% \[
+% \mathbb{E}[X] = 0 \quad \text{و} \quad \mathbb{E}[Y] = 0،
+% \]
+% بنابراین:
+% \[
+% \mathbb{E}[Z] = 0.
+% \]
+
+% 2. واریانس \( Z \):
+% \[
+% \text{Var}(Z) = \mathbb{E}[Z^2] - (\mathbb{E}[Z])^2.
+% \]
+% \[
+% Z^2 = (XY)^2 = X^2Y^2 \quad \text{و} \quad Y^2 = 1،
+% \]
+% پس:
+% \[
+% \text{Var}(Z) = \mathbb{E}[X^2] = \text{Var}(X) = 1.
+% \]
+
+% \subsection*{(پ) کوواریانس \( X \) و \( Y \)}
+
+% کوواریانس به صورت زیر است:
+% \[
+% \text{Cov}(X, Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y].
+% \]
+% چون \( \mathbb{E}[X] = 0 \) و \( \mathbb{E}[Y] = 0 \)، داریم:
+% \[
+% \text{Cov}(X, Y) = \mathbb{E}[XY].
+% \]
+% با توجه به استقلال \( X \) و \( Y \):
+% \[
+% \text{Cov}(X, Y) = \mathbb{E}[X]\mathbb{E}[Y] = 0.
+% \]
+
+% \subsection*{(ت) آیا \( X + Z \) توزیع نرمال دارد؟}
+
+% می‌دانیم:
+% \[
+% X + Z = X + XY = X(1 + Y).
+% \]
+% از آنجایی که \( Y \) مقدارهای \( +1 \) و \( -1 \) را می‌گیرد، \( 1 + Y \) مقدارهای \( 0 \) و \( 2 \) را با احتمال برابر می‌گیرد. بنابراین:
+% \[
+% X + Z =
+% \begin{cases}
+% 0 & \text{اگر } Y = -1, \\
+% 2X & \text{اگر } Y = +1.
+% \end{cases}
+% \]
+% این یک ترکیب توزیع‌ها است و \textbf{توزیع نرمال ندارد}.
+
+% \end{document}
